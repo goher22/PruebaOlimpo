@@ -50,7 +50,6 @@ class TakePhoteScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.navigate_next),
         onPressed: () {
-          if (!userProvider.isValidForm()) return;
           Navigator.pushNamed(context, 'geo');
         },
       ),
