@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:movil_prueba/providers/users_provider.dart';
 import 'package:movil_prueba/screens/screens.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(Appstae());
+
+class Appstae extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Provider(
+      create: (_) => UsersProvider(),
+      child: MyApp(),
+    );
+  }
+}
 
 class MyApp extends StatelessWidget {
   @override
