@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movil_prueba/models/models.dart';
 
 /**
  * Control de estado del formulario del usuario al registrar
@@ -6,13 +7,25 @@ import 'package:flutter/material.dart';
 class UsersProvider extends ChangeNotifier {
   GlobalKey<FormState> formKey = new GlobalKey<FormState>();
 
+  //Counstrutor
+  UsersProvider() {
+    this.clearUser();
+  }
+
   //Datos del usuario
-  String name = '';
-  String iCard = '';
-  String address = '';
-  String city = '';
-  String country = '';
-  String mobile = '';
+  User? user;
+
+  //Limpiar Capo user
+  clearUser() {
+    user = User(
+      name: '',
+      iCard: '',
+      address: '',
+      city: '',
+      country: '',
+      mobile: '',
+    );
+  }
 
   //Control de peticiones
   bool _isLoading = false;
@@ -22,6 +35,7 @@ class UsersProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  //Validacion de formulario
   bool isValidForm() {
     return formKey.currentState?.validate() ?? false;
   }
