@@ -8,8 +8,10 @@ void main() => runApp(Appstae());
 class Appstae extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Provider(
-      create: (_) => UsersProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UsersProvider()),
+      ],
       child: MyApp(),
     );
   }
