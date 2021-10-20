@@ -25,6 +25,7 @@ class UsersProvider extends ChangeNotifier {
       country: '',
       mobile: '',
     );
+    notifyListeners();
   }
 
   //Cambio en la imagen

@@ -31,7 +31,7 @@ class _GeopositioningScreenState extends State<GeopositioningScreen> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.navigate_next),
         onPressed: () {
-          Navigator.pushNamed(context, 'status');
+          Navigator.pushNamed(context, 'save');
         },
       ),
     );
