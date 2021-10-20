@@ -27,6 +27,12 @@ class UsersProvider extends ChangeNotifier {
     );
   }
 
+  //Cambio en la imagen
+  set pinture(String path) {
+    user!.picture = path;
+    notifyListeners();
+  }
+
   //Control de peticiones
   bool _isLoading = false;
   bool get isLoading => _isLoading;
