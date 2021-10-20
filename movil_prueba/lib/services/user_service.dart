@@ -6,31 +6,15 @@ import 'package:movil_prueba/models/models.dart';
 
 class UsersServices extends ChangeNotifier {
   final String _baseUrl = 'https://prueba-olimpo-default-rtdb.firebaseio.com';
-  User? user;
   bool isSaving = false;
 
-  UsersServices() {
-    _clearUser();
-  }
-
-  _clearUser() {
-    this.user = User(
-      name: '',
-      iCard: '',
-      address: '',
-      city: '',
-      country: '',
-      mobile: '',
-    );
-  }
-
-  Future saveOrCreateProduct() async {
+  Future saveOrCreateProduct(User user) async {
     isSaving = true;
     notifyListeners();
 
-    if (this.user!.id == null) {
+    if (user.id == null) {
       // Es necesario crear
-      await this.createProduct();
+      await this.createProduct(user);
     } else {
       // Actualizar
       //await this.updateProduct( product );
@@ -40,16 +24,16 @@ class UsersServices extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<String> createProduct() async {
+  Future<String> createProduct(User user) async {
     final url = Uri.https(_baseUrl, 'products.json');
-    final resp = await http.post(url, body: this.user!.toJson());
+    final resp = await http.post(url, body: user.toJson());
     final decodedData = json.decode(resp.body);
 
-    this.user!.id = decodedData['name'];
+    user.id = decodedData['name'];
 
     //TODO: Editar listado de usuario
     //this.users.add(product);
 
-    return this.user!.id!;
+    return user.id!;
   }
 }
