@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movil_prueba/providers/users_provider.dart';
 import 'package:movil_prueba/screens/screens.dart';
+import 'package:movil_prueba/services/services.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(Appstae());
@@ -11,6 +12,7 @@ class Appstae extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => UsersProvider()),
+        ChangeNotifierProvider(create: (_) => UsersServices())
       ],
       child: MyApp(),
     );
